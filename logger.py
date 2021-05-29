@@ -1,3 +1,4 @@
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -6,6 +7,7 @@ class Logger:
     """
     Logger that prints to stdout and also writes to a file
     """
+
     def __init__(self, log_file: str):
         self.__logs = ""
         self.__logging_date = date.today().strftime("%d.%m.%Y")
@@ -16,7 +18,7 @@ class Logger:
 
     def __del__(self):
         """
-        Use RAII to write the logs at the end of the script
+        Write the logs to the file at the end of the script (RAII style)
         """
         if not self.__logs:
             return
@@ -33,3 +35,11 @@ class Logger:
         """
         self.__logs += "\n" + s
         print(s)
+
+    def exit(self, s: str):
+        """
+        Log a string and then exit execution
+        :param s: String to log
+        """
+        self.__logs += "\n" + s
+        sys.exit(s)

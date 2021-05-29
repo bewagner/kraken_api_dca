@@ -1,5 +1,4 @@
 import json
-import sys
 from enum import Enum
 from pathlib import Path
 from typing import List
@@ -50,18 +49,18 @@ class Order:
             current_crypto_price = current_price(self.pair, kraken)
         except ValueError as exception:
             if "Unknown asset pair" in exception.args[0]:
-                sys.exit(order_string
-                         + "\n"
-                           f"ERROR: You specified an unknown trading pair: {self.pair}"
-                           f"\nSee here for a full list of all trading pairs "
-                           f"https://support.kraken.com/hc/en-us/articles/360000920306-Ticker-pairs#:~:text="
-                           f"A%20Ticker%20is%20a%20report,example%20the%20trading%20pair%20BTCEUR.&text="
-                           f"This%20Ticker%20example%20will%20pull,re%20deployed%20to%20our%20platform.")
+                logger.exit(order_string
+                            + "\n"
+                              f"ERROR: You specified an unknown trading pair: {self.pair}"
+                              f"\nSee here for a full list of all trading pairs "
+                              f"https://support.kraken.com/hc/en-us/articles/360000920306-Ticker-pairs#:~:text="
+                              f"A%20Ticker%20is%20a%20report,example%20the%20trading%20pair%20BTCEUR.&text="
+                              f"This%20Ticker%20example%20will%20pull,re%20deployed%20to%20our%20platform.")
 
             if "Data extraction error" in exception.args[0]:
-                sys.exit(order_string + "\nERROR: There was an error while extracting data from the Kraken API.")
+                logger.exit(order_string + "\nERROR: There was an error while extracting data from the Kraken API.")
 
-            sys.exit(order_string + f"ERROR: {exception.args}")
+            logger.exit(order_string + f"ERROR: {exception.args}")
 
         current_crypto_price = round(current_crypto_price, 3)
 
@@ -86,18 +85,18 @@ class Order:
             errors = response['error']
 
             if any("Invalid arguments:volume" in e for e in errors):
-                sys.exit(order_string
-                         + "\nERROR: The volume you specified for your order was invalid.\n"
-                           "This probably means the specified fiat amount was too low.\n"
-                           "See https://support.kraken.com/hc/en-us/articles/"
-                           "205893708-Minimum-order-size-volume-for-trading "
-                           "for the minimum required order sizes.")
+                logger.exit(order_string
+                            + "\nERROR: The volume you specified for your order was invalid.\n"
+                              "This probably means the specified fiat amount was too low.\n"
+                              "See https://support.kraken.com/hc/en-us/articles/"
+                              "205893708-Minimum-order-size-volume-for-trading "
+                              "for the minimum required order sizes.")
             if any("Insufficient funds" in e for e in errors):
-                sys.exit(order_string
-                         + "\nERROR: Insufficient funds. "
-                           "Your Kraken account does not contain enough funds for this order.")
+                logger.exit(order_string
+                            + "\nERROR: Insufficient funds. "
+                              "Your Kraken account does not contain enough funds for this order.")
 
-            sys.exit(order_string + f"ERROR: {errors}")
+            logger.exit(order_string + f"ERROR: {errors}")
 
         logger.log(f"Placed order: {self}\n")
 
@@ -111,24 +110,24 @@ def read_orders_from_file(logger: Logger) -> List[Order]:
     """
     orders_file = Path("orders.json")
     if not orders_file.exists():
-        sys.exit("ERROR: Couldn't find an order file orders.json. "
-                 "Make sure this file exists in the same directory as kraken_api_dca.py")
+        logger.exit("ERROR: Couldn't find an order file orders.json. "
+                    "Make sure this file exists in the same directory as kraken_api_dca.py")
     try:
         orders_file_content = orders_file.open("r").read()
     except Exception as e:
-        sys.exit(f"ERROR: There was an error while reading the orders file.\n{e}")
+        logger.exit(f"ERROR: There was an error while reading the orders file.\n{e}")
     try:
         orders_json = json.loads(orders_file_content)
     except json.JSONDecodeError as e:
-        sys.exit(f"ERROR: There was an error while decoding your orders file. "
-                 f"Please make sure you wrote valid JSON.\n{e}")
+        logger.exit(f"ERROR: There was an error while decoding your orders file. "
+                    f"Please make sure you wrote valid JSON.\n{e}")
 
     orders = []
     for order in orders_json:
         def check_parameter(parameter: str, desired_type):
             if parameter not in order or not isinstance(order[parameter], desired_type):
-                sys.exit(f"ERROR: Your order\n{order}\ndid not contain a valid value for '{parameter}'."
-                         "\nMake sure your JSON input in orders.json is correct.")
+                logger.exit(f"ERROR: Your order\n{order}\ndid not contain a valid value for '{parameter}'."
+                            "\nMake sure your JSON input in orders.json is correct.")
 
         check_parameter("pair", str)
         check_parameter("amount_in_fiat", (float, int))
