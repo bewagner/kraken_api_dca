@@ -4,6 +4,7 @@ from enum import Enum
 from pathlib import Path
 from typing import List
 
+from logger import Logger
 from price_calculation import current_price, round_to_amount_of_decimals_kraken_accepts, calculate_volume_from_price
 
 
@@ -33,12 +34,13 @@ class Order:
     def __repr__(self):
         return f"[pair: {self.pair}, amount_in_fiat: {self.amount_in_fiat}, debug: {self.debug}]"
 
-    def place(self, kraken):
+    def place(self, kraken, logger: Logger):
         """
         Place an order via the Kraken API
+        :param logger: Logger to write logging strings to
         :param kraken: Handle to the Kraken API
         """
-        print(f"Start placing order {self}")
+        logger.log(f"Start placing order {self}")
         order_string = f"ORDER: pair: {self.pair}, " \
                        f"amount in fiat: {self.amount_in_fiat}, " \
                        f"style: {self.order_style.name}, " \
@@ -97,13 +99,14 @@ class Order:
 
             sys.exit(order_string + f"ERROR: {errors}")
 
-        print(f"Placed order: {self}\n")
+        logger.log(f"Placed order: {self}\n")
 
 
-def read_orders_from_file() -> List[Order]:
+def read_orders_from_file(logger: Logger) -> List[Order]:
     """
     Read orders from the orders.json file.
     Also, make sure they are formatted correctly and check the value types.
+    :param logger: Logger to write logging strings to
     :return: Orders read from file
     """
     orders_file = Path("orders.json")
@@ -134,8 +137,8 @@ def read_orders_from_file() -> List[Order]:
         orders.append(Order(pair=order["pair"], amount_in_fiat=order["amount_in_fiat"], debug=order["debug"]))
 
     if orders:
-        print("Read the following orders from the orders.json file:")
+        logger.log("Read the following orders from the orders.json file:")
         for order in orders:
-            print(f"\t- {order}")
+            logger.log(f"\t- {order}")
 
     return orders
