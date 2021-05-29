@@ -1,0 +1,13 @@
+[
+  {
+    "pair": "ALGOEUR",
+    "amount_in_fiat": 50.0,
+    "debug": true
+  },
+  {
+    "pair": "ADAEUR",
+    "amount_in_fiat": 50,
+    "debug": true
+  }
+]
+
