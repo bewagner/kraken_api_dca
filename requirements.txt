@@ -1,2 +1,2 @@
-krakenex==2.1.0
-json5==0.9.5
+krakenex
+json5
