@@ -1,1 +1,1 @@
-krakenex
+krakenex==2.1.0
