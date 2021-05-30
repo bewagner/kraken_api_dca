@@ -5,6 +5,8 @@ have come to the right place. The `kraken_api_dca.py` script allows you to speci
 Kraken. Just let your computer run the script at regular intervals and you have your
 automated [Dollar cost averaging](https://en.wikipedia.org/wiki/Dollar_cost_averaging) bot.
 
+[![Python package](https://github.com/bewagner/kraken_api_dca/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/bewagner/kraken_api_dca/actions/workflows/workflow.yml)
+
 # Dependencies
 This script needs the `krakenex` pip package. To install it run
 
