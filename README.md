@@ -1,11 +1,15 @@
-# What does it do?
+# Kraken API DCA script
+
+Hi! If you're looking for a way to automate your regular crypto purchases via [Kraken](https://www.kraken.com/), you
+have come to the right place. The `kraken_api_dca.py` script allows you to specify orders in all trading pairs on
+Kraken. Just let your computer run the script at regular intervals and you have your
+automated [Dollar cost averaging](https://en.wikipedia.org/wiki/Dollar_cost_averaging) bot.
 
 # Dependencies
-
-To install the required Python dependencies run:
+This script needs the `krakenex` pip package. To install it run
 
 ```commandline
-pip install -r requirements.txt
+pip install krakenex
 ```
 
 # Usage
@@ -63,11 +67,33 @@ script.
 
 ## How can you automate calling the script
 
-TODO
+### Linux
+
+On Linux you can use `anacron` to schedule execution of the script. To run the script monthly, you can add the following
+line to `/etc/anacrontab`:
+
+TODO Make sure this works
+
+```text
+@monthly 7 kraken-dca-api python3 ~/kraken_api_dca/kraken_api_dca.py
+```
+
+`anacron` has the advantage over `cron` that if your computer is turned off, the script will be executed the next the
+computer is turned on.
+[See here](https://kifarunix.com/scheduling-tasks-using-anacron-in-linux-unix/) for more information on `anacron`.
+
+### Windows
+
+On Windows you could try the following library to schedule script execution:
+[Advanced Python Scheduler](https://apscheduler.readthedocs.io/en/stable/)
+(Note: I couldn't test this, since I don't have a Windows machine)
+
+## Logging
+
+TODO Mention logging
 
 # Use at your own risk
 
 This code is correct to the best of my knowledge and belief. If you decide to use it, you do so at your own risk. I will
 not be liable for any loses or damages in connection with using my code.
 
-TODO Mention logging
