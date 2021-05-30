@@ -11,7 +11,7 @@ automated [Dollar cost averaging](https://en.wikipedia.org/wiki/Dollar_cost_aver
 This script needs the `krakenex` pip package. To install it run
 
 ```commandline
-pip install krakenex
+pip install -r requirements.txt
 ```
 
 # Usage
