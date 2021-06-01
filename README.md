@@ -8,6 +8,7 @@ automated [Dollar cost averaging](https://en.wikipedia.org/wiki/Dollar_cost_aver
 [![Python package](https://github.com/bewagner/kraken_api_dca/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/bewagner/kraken_api_dca/actions/workflows/workflow.yml)
 
 # Dependencies
+
 This script needs the `krakenex` pip package. To install it run
 
 ```commandline
@@ -20,7 +21,7 @@ To use the script, you need to:
 
 - Create a Kraken API key and save it to the file `kraken.key`.
   [See here for an explanation.](#kraken-api-key)
-- Specifiy your orders in the file `orders.json`
+- Create a file `orders.json` and specify your orders.
   . [See this description of how to place your orders.](#specifying-your-orders)
 - Run the script via `python3 kraken_api_dca.py`
 
@@ -29,12 +30,12 @@ To use the script, you need to:
 To use this script, you need a Kraken API key. To create your API key, click on your profile icon. Then go
 to `Security->API`.
 
-TODO ... TODO image 
+TODO ... TODO image
 
 ## Specifying your orders
 
-You can specify with orders you want to place in the file `orders.json`. The file contains a list of orders in JSON
-format. Each order object contains the following fields:
+To specify your orders, create a file called `orders.json`. The file should contain a list of orders in JSON
+format. Each order object can contain the following fields:
 
 - `pair (string)`: The trading pair you want to buy (for example `ALGOUSD` for trading Algorand for US$). Have a look
   at `trading_pairs.txt` for an overview of all trading pairs. Note that Bitcoin is called `XBT`.
@@ -74,14 +75,12 @@ script.
 On Linux you can use `anacron` to schedule execution of the script. To run the script monthly, you can add the following
 line to `/etc/anacrontab`:
 
-TODO Make sure this works
-
 ```text
-@monthly 7 kraken-dca-api python3 ~/kraken_api_dca/kraken_api_dca.py
+@monthly 7 kraken-dca-api cd ~/kraken_api_dca && python3 ~/kraken_api_dca/kraken_api_dca.py
 ```
 
-`anacron` has the advantage over `cron` that if your computer is turned off, the script will be executed the next the
-computer is turned on.
+`anacron` has the advantage over `cron` that if your computer is turned off, the script will be executed the next time
+the computer is turned on.
 [See here](https://kifarunix.com/scheduling-tasks-using-anacron-in-linux-unix/) for more information on `anacron`.
 
 ### Windows
@@ -92,7 +91,7 @@ On Windows you could try the following library to schedule script execution:
 
 ## Logging
 
-TODO Mention logging
+The script will write logs to a file called `logs.txt`. Check this file
 
 # Use at your own risk
 

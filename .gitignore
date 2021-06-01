@@ -132,4 +132,5 @@ dmypy.json
 kraken.key
 .idea/
 logs.txt
+orders.json
 
