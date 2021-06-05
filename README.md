@@ -93,7 +93,7 @@ An example `orders.json` could look like this:
 ```json5
 [
   {
-    "pair": "XETHZEUR",
+    "pair": "XETHZUSD",
     "amount_in_fiat": 100,
     "debug": true
   },
