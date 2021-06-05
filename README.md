@@ -28,9 +28,11 @@ To use the script, you need to:
 ## Kraken API key
 
 To use this script, you need a Kraken API key. To create your API key, click on your profile icon. Then go
-to `Security->API`.
+to `Security->API`. You will see the following screen.
 
-TODO ... TODO image
+
+![API key screen](/images/API-key-screen.png)
+
 
 ## Specifying your orders
 
