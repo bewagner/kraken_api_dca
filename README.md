@@ -27,17 +27,55 @@ To use the script, you need to:
 
 ## Kraken API key
 
-To use this script, you need a Kraken API key. To create your API key, click on your profile icon. Then go
-to `Security->API`. You will see the following screen.
+To use this script, you need a Kraken API key that allows creating orders.
 
+Below we explain how to create an API key if you don't have one already.
+
+### How to create an API key
+
+To create your API key, click on your profile icon. Then go to `Security->API`. You will see the following screen.
 
 ![API key screen](/images/API-key-screen.png)
 
+Click on 'Add key' to add a new API key.
+
+![API key screen with 'add key' button highlighted](/images/API-key-screen-with-button-highlight.png)
+This will take you to the next screen.
+
+![API creation screen which allows choosing the API key rights](/images/add-API-key.png)
+
+Make sure you check **Create & Modify Orders**.
+
+You should not check any other fields. Especially **not** 'Withdraw Funds', as this would allow people with access to
+your API key to withdraw your funds.
+
+Then click on 'Generate key'.
+
+![API creation screen which allows choosing the API key rights, with highlight on 'generate key' button.](/images/add-API-key-button-highlight.png)
+
+This creates your key and takes you to the next screen. Here you see your public and private key. This is the
+information you have to store in the `kraken.key` file.
+
+Copy the information from the 'API key' line and write it into the first line in `kraken.key`.
+![API creation screen with highlight on API key](/images/final-screen-api-key-highlight.png)
+
+Then copy the private key and save it in the second line of `kraken.key`.
+
+![API creation screen with highlight on private key](/images/final-screen-private-key-highlight.png)
+
+Finally, click 'Save.'
+
+Your `kraken.key` file should look like this.
+
+```text
+<API key>
+<Private key>
+```
 
 ## Specifying your orders
 
-To specify your orders, create a file called `orders.json`. The file should contain a list of orders in JSON
-format. Each order object can contain the following fields:
+To specify your orders, create a file called `orders.json`. The file should contain a list of orders in JSON format.
+Each order object can contain the following fields:
 
 - `pair (string)`: The trading pair you want to buy (for example `ALGOUSD` for trading Algorand for US$). Have a look
   at `trading_pairs.txt` for an overview of all trading pairs. Note that Bitcoin is called `XBT`.
