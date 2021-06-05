@@ -1,4 +1,4 @@
-# Kraken API DCA script
+# Kraken API Dollar cost averaging script
 
 Hi! If you're looking for a way to automate your regular crypto purchases via [Kraken](https://www.kraken.com/), you
 have come to the right place. The `kraken_api_dca.py` script allows you to specify orders in all trading pairs on
@@ -118,7 +118,7 @@ On Linux you can use `anacron` to schedule execution of the script. To run the s
 line to `/etc/anacrontab`:
 
 ```text
-@monthly 7 kraken-dca-api cd ~/kraken_api_dca && python3 ~/kraken_api_dca/kraken_api_dca.py
+@monthly 7 kraken-api-dca-script cd ~/kraken_api_dca && python3 ~/kraken_api_dca/kraken_api_dca.py
 ```
 
 `anacron` has the advantage over `cron` that if your computer is turned off, the script will be executed the next time
