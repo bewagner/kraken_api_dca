@@ -56,6 +56,8 @@ Then click on 'Generate key'.
 This creates your key and takes you to the next screen. Here you see your public and private key. This is the
 information you have to store in the `kraken.key` file.
 
+
+![API creation screen](/images/final-screen.png)
 Copy the information from the 'API key' line and write it into the first line in `kraken.key`.
 ![API creation screen with highlight on API key](/images/final-screen-api-key-highlight.png)
 
