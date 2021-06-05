@@ -96,5 +96,5 @@ The script will write logs to a file called `logs.txt`. Check this file
 # Use at your own risk
 
 This code is correct to the best of my knowledge and belief. If you decide to use it, you do so at your own risk. I will
-not be liable for any loses or damages in connection with using my code.
+not be liable for any losses or damages in connection with using my code.
 
