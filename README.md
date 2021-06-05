@@ -133,7 +133,7 @@ On Windows you could try the following library to schedule script execution:
 
 ## Logging
 
-The script will write logs to a file called `logs.txt`. Check this file
+The script will write logs to a file called `logs.txt`. Check this file for the results of your API calls.
 
 # Use at your own risk
 
