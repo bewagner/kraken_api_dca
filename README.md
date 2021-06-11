@@ -14,7 +14,7 @@ script.
 
 [comment]: <> ([![Ko-fi logo]&#40;/images/kofiLogo.png|width=100&#41;]&#40;bla&#41; [![Patreon logo]&#40;/images/patreonLogo.png|width=100&#41;]&#40;&#41;)
 
-[<img src="/images/kofiLogo.png" width="200" >](https://ko-fi.com/bewagner)
+[<img src="/images/kofiLogo.png" width="200" >](https://ko-fi.com/bewagner) &nbsp; &nbsp; &nbsp;
 [<img src="/images/patreonLogo.png" width="200" >](https://www.patreon.com/bewagner?fan_landing=true)
 
 # Dependencies
