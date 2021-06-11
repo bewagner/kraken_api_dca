@@ -9,8 +9,7 @@ automated [Dollar cost averaging](https://en.wikipedia.org/wiki/Dollar_cost_aver
 # Support
 If this code is useful to you, consider supporting me! This way I can continue maintaining and improving your DCA script.
 
-![Ko-fi logo](/images/kofiLogo.png)
-![Patreon logo](/images/patreonLogo.png)
+[![Ko-fi logo](/images/kofiLogo.png)](bla) [![Patreon logo](/images/patreonLogo.png)]()
 
 # Dependencies
 
