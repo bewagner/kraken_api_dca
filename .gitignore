@@ -134,3 +134,6 @@ kraken.key
 logs.txt
 orders.json
 
+test.py
+test_logs.txt
+
