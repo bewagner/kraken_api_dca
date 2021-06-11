@@ -9,8 +9,9 @@ automated [Dollar cost averaging](https://en.wikipedia.org/wiki/Dollar_cost_aver
 # Support
 If this code is useful to you, consider supporting me! This way I can continue maintaining and improving your DCA script.
 
-[![Ko-fi logo](/images/kofiLogo.png|width=100)](bla) [![Patreon logo](/images/patreonLogo.png|width=100)]()
-
+[comment]: <> ([![Ko-fi logo]&#40;/images/kofiLogo.png|width=100&#41;]&#40;bla&#41; [![Patreon logo]&#40;/images/patreonLogo.png|width=100&#41;]&#40;&#41;)
+<img src="/images/kofiLogo.png" width="100" height="100">
+<img src="/images/patreonLogo.png" width="100" height="100">
 # Dependencies
 
 This script needs the `krakenex` pip package. To install it run
