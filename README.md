@@ -6,12 +6,17 @@ Kraken. Just let your computer run the script at regular intervals and you have 
 automated [Dollar cost averaging](https://en.wikipedia.org/wiki/Dollar_cost_averaging) bot.
 
 [![Python package](https://github.com/bewagner/kraken_api_dca/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/bewagner/kraken_api_dca/actions/workflows/workflow.yml)
+
 # Support
-If this code is useful to you, consider supporting me! This way I can continue maintaining and improving your DCA script.
+
+If this code is useful to you, consider supporting me! This way I can continue maintaining and improving your DCA
+script.
 
 [comment]: <> ([![Ko-fi logo]&#40;/images/kofiLogo.png|width=100&#41;]&#40;bla&#41; [![Patreon logo]&#40;/images/patreonLogo.png|width=100&#41;]&#40;&#41;)
-[<img src="/images/kofiLogo.png" width="100" >](www.google.de)
-[<img src="/images/patreonLogo.png" width="100" >](www.google.de)
+
+|[<img src="/images/kofiLogo.png" width="100" >](www.google.de)
+| [<img src="/images/patreonLogo.png" width="100" >](www.google.de)|
+
 # Dependencies
 
 This script needs the `krakenex` pip package. To install it run
@@ -60,7 +65,6 @@ Then click on 'Generate key'.
 
 This creates your key and takes you to the next screen. Here you see your public and private key. This is the
 information you have to store in the `kraken.key` file.
-
 
 ![API creation screen](/images/final-screen.png)
 Copy the information from the 'API key' line and write it into the first line in `kraken.key`.
