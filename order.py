@@ -71,12 +71,12 @@ class Order:
             self.order_type = OrderType.limit
             debug_multiplier = 0.01
 
+        order_price = round_to_amount_of_decimals_kraken_accepts(current_crypto_price * debug_multiplier)
         response = kraken.query_private('AddOrder',
                                         {'pair': self.pair,
                                          'type': self.order_style.name,
                                          'ordertype': self.order_type.name,
-                                         'price': round_to_amount_of_decimals_kraken_accepts(
-                                             current_crypto_price * debug_multiplier),
+                                         'price': order_price,
                                          'volume': calculate_volume_from_price(self.amount_in_fiat,
                                                                                current_crypto_price),
                                          'trading_agreement': 'agree'

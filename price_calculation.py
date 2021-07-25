@@ -61,7 +61,7 @@ def round_to_amount_of_decimals_kraken_accepts(number: float) -> float:
     :return: Rounded number
     """
     # The Kraken API only accepts up to five decimals.
-    number_of_accepted_decimals = 5
+    number_of_accepted_decimals = 1
     return round(number, number_of_accepted_decimals)
 
 
