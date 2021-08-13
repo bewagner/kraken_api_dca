@@ -51,7 +51,7 @@ def calculate_volume_from_price(fiat_volume: float, crypto_price: float) -> floa
     :return: Calculated crypto volume
     """
     volume = fiat_volume / crypto_price
-    return round_to_amount_of_decimals_kraken_accepts(volume)
+    return volume
 
 
 def round_to_amount_of_decimals_kraken_accepts(number: float) -> float:
