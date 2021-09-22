@@ -62,7 +62,7 @@ class Order:
 
             logger.exit(order_string + f"ERROR: {exception.args}")
 
-        current_crypto_price = round(current_crypto_price, 3)
+        current_crypto_price = round(current_crypto_price, 5)
 
         # In debug mode, we set a limit order at 1% of the current price.
         # This way the user can check if everything works and cancel their order later.
