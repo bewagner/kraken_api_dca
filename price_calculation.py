@@ -1,26 +1,6 @@
 from typing import Tuple
 
 
-def get_current_price_from(data) -> Tuple[bool, float]:
-    """
-    Get the current price of a crypto trading pair from the data the Kraken API returned
-    :param data: Data returned by the Kraken API
-    :return: Current price of crypto trading pair
-    """
-    if not data:
-        return False, 0
-    amount_index = -1
-    closing_price_index = -3
-
-    for entry in data:
-        amount = entry[amount_index]
-        if amount == 0:
-            continue
-        return True, float(entry[closing_price_index])
-
-    return False, 0
-
-
 def current_price(pair: str, kraken) -> float:
     """
     Get the current price of a crypto trading pair from the Kraken API
@@ -28,15 +8,15 @@ def current_price(pair: str, kraken) -> float:
     :param pair: Trading pair
     :return: Current price of the trading pair
     """
-    price_data = kraken.query_public('OHLC', data={'pair': pair})
+    price_data = kraken.query_public('Ticker', data={'pair': pair})
     if price_data['error']:
         raise ValueError(price_data['error'][0])
     if pair not in price_data['result']:
         raise ValueError("Data extraction error")
 
-    data = price_data['result'][pair]
-    ok, price = get_current_price_from(data)
-    if not ok:
+    data = price_data['result'][pair]['a']
+    price = float(data[0])
+    if not price:
         raise ValueError("Data extraction error")
 
     return round_to_amount_of_decimals_kraken_accepts(price)
@@ -61,7 +41,7 @@ def round_to_amount_of_decimals_kraken_accepts(number: float) -> float:
     :return: Rounded number
     """
     # The Kraken API only accepts up to five decimals.
-    number_of_accepted_decimals = 1
+    number_of_accepted_decimals = 5
     return round(number, number_of_accepted_decimals)
 
 
