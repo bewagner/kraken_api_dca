@@ -22,7 +22,7 @@ class Order:
                  amount_in_fiat: int,
                  debug: bool,
                  order_style: OrderStyle = OrderStyle.buy,
-                 order_type: OrderType = OrderType.limit,
+                 order_type: OrderType = OrderType.market,
                  ):
         self.pair = pair
         self.amount_in_fiat = amount_in_fiat
